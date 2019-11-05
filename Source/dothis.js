@@ -34,3 +34,14 @@ function draw_grid( rctx, rminor, rmajor, rstroke, rfill  )
     }
     rctx.restore( ); 
 }
+
+//Fills in Square of current Position
+//Coordiante points are displayed
+function fillSquare(square, xaxis,yaxis,zaxis){
+	var PrintThis = '(' + xaxis/10 + ','+ yaxis/10 + ',' + zaxis/10 + ')';
+	square.beginPath();
+	square.rect(xaxis, yaxis, 10, 10);
+	square.fillStyle = 'Red';
+	square.fillText( PrintThis, xaxis+10, yaxis+10 );
+	square.fill();
+}

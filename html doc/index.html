@@ -1,0 +1,25 @@
+<!doctype html><html><head>
+<title>This is an HTML canvas</title>
+<link rel="stylesheet" href="../Source/styles.css">
+</head>
+<body><h1>Asgwilanga Caverns</h1>
+<h2>Team Name: LAB</h2>
+
+<canvas id="grid" width="410" height="410"></canvas>
+
+</body>
+<script src="../Source/dothis.js"></script>
+<script>
+	var canvas = document.getElementById( "grid" );
+	var context = canvas.getContext( "2d" );
+
+
+	// Draw a grid
+	draw_grid( context, 10, 50, 'white', 'yellow' );
+
+  //pass default coordinates 
+	//pass_point(context,15,0,0);
+    
+
+</script>
+</html>

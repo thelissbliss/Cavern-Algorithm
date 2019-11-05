@@ -17,7 +17,7 @@ Contents (Files in the .zip submission):
 
 Setup and Installation (if any): 
 Download and extract zip file.
-Once downloaded, navigate to index.html file.(3335-p1-LAA -> html doc -> index.html)
+Once downloaded, navigate to index.html file.(3335-p1-LAB -> html doc -> index.html)
 
 Features (both included and missing): 
 

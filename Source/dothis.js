@@ -119,7 +119,7 @@ function passPoint(context, xaxis, yaxis, zaxis){
 
 function print(square){
 	var count=0
-	for (;count<=74;){
+	for (;count<=50;){
 		var temp1=xValues[count]*10;
 		var temp2=yValues[count]*10;
 		var temp3=zValues[count]*10;

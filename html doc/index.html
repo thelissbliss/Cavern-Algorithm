@@ -13,15 +13,29 @@
 	var canvas = document.getElementById( "grid" );
 	var context = canvas.getContext( "2d" );
 
+	//Array to store values of coordinates
+	var xValues = [];
+	var yValues =[];
+	var zValues =[];
+	//var limits=[15,8,7];
+	//var startPosition=[15,0,0];
+
+	//Default Starting position(Center)
+	var xaxis=150;
+	var yaxis=0;
+	var zaxis=0
+	//var i=xaxis/10;
+	//var j=yaxis/10;
+
+	//assign color value as red
 
 	// Draw a grid
 	draw_grid( context, 10, 50, 'white', 'yellow' );
-
-	//Test: Dipslays point on graph and prints out coordinates
-        fillSquare(context,xaxis, yaxis, zaxis);
+	//Test: Plots Position with
+	fillSquare(context,xaxis, yaxis, zaxis);
 	
-	//passPoint(context, xaxis, yaxis, zaxis);
+	passPoint(context, xaxis, yaxis, zaxis);
     
-
+	print(context);
 </script>
 </html>

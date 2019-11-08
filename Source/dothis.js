@@ -1,6 +1,6 @@
 /* Laura Solorio laurasolorio98@csu.fullerton.edu
    Alyssa Bright alyssabright@csu.fullerton.edu
-   Brandon 
+   Brandon btomich@csu.fullerton.edu
 
    File Description: This javascript file contains all functions
 	1. Draw Grid
@@ -9,7 +9,7 @@ var xValues = [];
 var yValues =[];
 var zValues =[];
 // ======  draw_grid ====
-function draw_grid( rctx, rminor, rmajor, rstroke, rfill  ) 
+function draw_grid( rctx, rminor, rmajor, rstroke, rfill  )
 {
     rctx.save( );
     rctx.strokeStyle = rstroke;
@@ -34,7 +34,7 @@ function draw_grid( rctx, rminor, rmajor, rstroke, rfill  )
         rctx.stroke( );
         if ( iy % rmajor == 0 ) {rctx.fillText( iy/10, 0, iy + 10 );}
     }
-    rctx.restore( ); 
+    rctx.restore( );
 }
 
 //Determines the direction for North, East, South, or West
@@ -75,7 +75,7 @@ function passPoint(context, xaxis, yaxis, zaxis){
 								yValues[counter]=j;
 								zValues[counter]=k;
 								counter++;
-							
+
 						}
 						else if(j==yValues[counter-1] && i!=xValues[counter-1] && k!=zValues[counter-1]){
 							xValues[counter]=i;
@@ -99,11 +99,11 @@ function passPoint(context, xaxis, yaxis, zaxis){
 							yValues[counter]=j;
 							zValues[counter]=k;
 							counter++;
-							
+
 					}
-					
+
 				}
-				k++	
+				k++
 			}
 			if(k == 8){
 				k=0;
@@ -117,18 +117,28 @@ function passPoint(context, xaxis, yaxis, zaxis){
 	}
 }
 
-function print(square){
-	var count=0
-	for (;count<=50;){
-		var temp1=xValues[count]*10;
-		var temp2=yValues[count]*10;
-		var temp3=zValues[count]*10;
-		var PrintThis = '(' + xValues[count] + ','+ yValues[count] + ',' + zValues[count] + ')';
-		square.beginPath();
-		square.rect(temp1, temp2, 10, 10);
-		square.fillStyle = 'Red';
-		square.fillText( PrintThis, temp1+10, temp2+10 );
-		square.fill();
-		count++;
-	}
+
+function print(square)
+{
+	//var count=0
+	for (var count = 0; count < 50; ++count)
+  {
+    (function (count)
+    {
+      setTimeout(function()
+      {
+    		var temp1=xValues[count]*10;
+    		var temp2=yValues[count]*10;
+    		var temp3=zValues[count]*10;
+    		var PrintThis = '(' + xValues[count] + ','+ yValues[count] + ',' + zValues[count] + ')';
+    		square.beginPath();
+    		square.rect(temp1, temp2, 10, 10);
+    		square.fillStyle = 'Red';
+    		square.fillText( PrintThis, temp1+10, temp2+10 );
+    		square.fill();
+
+      }, 100*count);
+    })(count);
+  }
+
 }

@@ -127,6 +127,16 @@ function print(square)
     {
       setTimeout(function()
       {
+		if(count>0 && xValues[count+1]!=null){
+			var temp4=xValues[count-1]*10;
+			var temp5=yValues[count-1]*10;
+			var PrintThis = '(' + xValues[count-1] + ','+ yValues[count-1] + ',' + zValues[count-1] + ')';
+			square.beginPath();
+			square.rect(temp4, temp5, 10, 10);
+			square.fillStyle = 'Grey';
+			square.fillText( PrintThis, temp4+10, temp5+10 );
+			square.fill();
+		}
     		var temp1=xValues[count]*10;
     		var temp2=yValues[count]*10;
     		var temp3=zValues[count]*10;

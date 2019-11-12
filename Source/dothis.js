@@ -136,9 +136,21 @@ function print(square)
     		square.fillStyle = 'Red';
     		square.fillText( PrintThis, temp1+10, temp2+10 );
     		square.fill();
+	      	if(count>0){
+			DrawLine(context, xValues[count-1],yValues[count-1],xValues[count],yValues[count]);
+		}
 
       }, 100*count);
     })(count);
   }
 
+}
+
+function DrawLine(square, x1,y1,x2,y2)
+{
+	square.beginPath();
+	square.moveTo(x1*10+2, y1*10+2);
+	square.lineTo(x2*10+2, y2*10+2);
+	square.strokeStyle = "magenta";
+	square.stroke();
 }

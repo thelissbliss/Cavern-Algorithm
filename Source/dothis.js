@@ -127,7 +127,7 @@ function print(square)
     {
       setTimeout(function()
       {
-		if(count>0 && xValues[count+1]!=null){
+		if(count>0 && xValues[count]!=null){
 			var temp4=xValues[count-1]*10;
 			var temp5=yValues[count-1]*10;
 			var PrintThis = '(' + xValues[count-1] + ','+ yValues[count-1] + ',' + zValues[count-1] + ')';

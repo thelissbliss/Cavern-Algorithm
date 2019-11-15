@@ -159,8 +159,8 @@ function print(square)
 function DrawLine(square, x1,y1,x2,y2)
 {
 	square.beginPath();
-	square.moveTo(x1*10+2, y1*10+2);
-	square.lineTo(x2*10+2, y2*10+2);
+	square.moveTo(x1*30+2, y1*20+2);
+	square.lineTo(x2*30+2, y2*20+2);
 	square.strokeStyle = "aqua";
 	square.stroke();
 }

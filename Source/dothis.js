@@ -23,7 +23,7 @@ function draw_grid( rctx, rminor, rmajor, rstroke, rfill  )
         rctx.lineTo( ix, height );
         rctx.lineWidth = ( ix % rmajor == 0 ) ? 0.5 : 0.25;
         rctx.stroke( );
-        if ( ix % rmajor == 0 ) { rctx.fillText( ix/10, ix, 10 ); }
+        if ( ix % rmajor == 0 ) { rctx.fillText( ix/30, ix, 10 ); }
     }
     for ( var iy = 0; iy < height; iy += rminor )
     {
@@ -32,7 +32,7 @@ function draw_grid( rctx, rminor, rmajor, rstroke, rfill  )
         rctx.lineTo( width, iy );
         rctx.lineWidth = ( iy % rmajor == 0 ) ? 0.5 : 0.25;
         rctx.stroke( );
-        if ( iy % rmajor == 0 ) {rctx.fillText( iy/10, 0, iy + 10 );}
+        if ( iy % rmajor == 0 ) {rctx.fillText( iy/20, 0, iy,10 );}
     }
     rctx.restore( );
 }
@@ -132,9 +132,9 @@ function print(square)
 			var temp5=yValues[count-1]*10;
 			var PrintThis = '(' + xValues[count-1] + ','+ yValues[count-1] + ',' + zValues[count-1] + ')';
 			square.beginPath();
-			square.rect(temp4, temp5, 10, 10);
+			square.rect(temp4*3, temp5*2, 8, 8);
 			square.fillStyle = 'Grey';
-			square.fillText( PrintThis, temp4+10, temp5+10 );
+			square.fillText( PrintThis, temp4*3.2, temp5*2+20 );
 			square.fill();
 		}
     		var temp1=xValues[count]*10;
@@ -142,9 +142,9 @@ function print(square)
     		var temp3=zValues[count]*10;
     		var PrintThis = '(' + xValues[count] + ','+ yValues[count] + ',' + zValues[count] + ')';
     		square.beginPath();
-    		square.rect(temp1, temp2, 10, 10);
+    		square.rect(temp1*3, temp2*2, 8,8);
     		square.fillStyle = 'Red';
-    		square.fillText( PrintThis, temp1+10, temp2+10 );
+    		square.fillText( PrintThis, temp1*3.2, temp2*2+20 );
     		square.fill();
 	      	if(count>0){
 			DrawLine(context, xValues[count-1],yValues[count-1],xValues[count],yValues[count]);

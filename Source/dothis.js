@@ -131,10 +131,15 @@ function print(square)
 			var temp4=xValues[count-1]*10;
 			var temp5=yValues[count-1]*10;
 			var PrintThis = '(' + xValues[count-1] + ','+ yValues[count-1] + ',' + zValues[count-1] + ')';
-			square.beginPath();
+			//square.beginPath();
 			square.rect(temp4*3, temp5*2, 8, 8);
 			square.fillStyle = 'Grey';
-			square.fillText( PrintThis, temp4*3.2, temp5*2+20 );
+			if(yValues[count-1]==0){
+				square.fillText( PrintThis, temp4*3.3-40, temp5*2+20 );
+			}
+		  	else{
+				square.fillText( PrintThis, temp4*3.2, temp5*2+20 );
+			}
 			square.fill();
 		}
     		var temp1=xValues[count]*10;
@@ -144,7 +149,12 @@ function print(square)
     		square.beginPath();
     		square.rect(temp1*3, temp2*2, 8,8);
     		square.fillStyle = 'Red';
-    		square.fillText( PrintThis, temp1*3.2, temp2*2+20 );
+		  	if(yValues[count]==0){
+				square.fillText( PrintThis, temp1*3.3-40, temp2*2+20 );
+			}
+		  	else{
+				square.fillText( PrintThis, temp1*3.2, temp2*2+20 );
+			}
     		square.fill();
 	      	if(count>0){
 			DrawLine(context, xValues[count-1],yValues[count-1],xValues[count],yValues[count]);

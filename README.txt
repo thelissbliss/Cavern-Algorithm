@@ -3,8 +3,9 @@
 
 Members(Group members are from 2 different class sections):
 Section Number = CPSC 335-04 
-Laura Solorio - laurasolorio98@csu.fullerton.edu
-Alyssa Bright - alyssabright@csu.fullerton.edu
+Laura Solorio  - laurasolorio98@csu.fullerton.edu
+Alyssa Bright  - alyssabright@csu.fullerton.edu
+Brandon Tomich - btomich@csu.fullerton.edu
 
 Section Number = CPSC 335-0<INSERT>
 Brandon <INSERT> - <Insert>

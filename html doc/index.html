@@ -12,30 +12,25 @@
 <script>
 	var canvas = document.getElementById( "grid" );
 	var context = canvas.getContext( "2d" );
-
-	//Array to store values of coordinates
-	var xValues = [];
-	var yValues =[];
-	var zValues =[];
+	
 	//var limits=[15,8,7];
-	//var startPosition=[15,0,0];
-
 	//Default Starting position(Center)
+	//startPosition=[15,0,0];
 	var xaxis=150;
 	var yaxis=0;
 	var zaxis=0
-	//var i=xaxis/10;
-	//var j=yaxis/10;
-
-	//assign color value as red
 
 	// Draw a grid
 	draw_grid(context, 15, 50, 'white', 'yellow' );
-	//Test: Plots Position with
-	//fillSquare(context,xaxis, yaxis, zaxis);
-
+	
+	//Finds next node that meets all requirements. 
+	// Verify Residue Distance
+	//1. Sum rule
+	//2. Zero-Max Rule
+	//3. Single Same Rule
 	passPoint(context, xaxis, yaxis, zaxis);
-
+	
+	//Diplays nodes on grid
 	print(context);
 
 </script>

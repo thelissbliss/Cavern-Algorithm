@@ -3,10 +3,7 @@
    Brandon Tomich btomich@csu.fullerton.edu
 
    File Description: This javascript file contains all functions
-	1. Draw Grid: Draws grid
-	2. Passpoint:
-	3. Print:
-	4. Drawline: Draws edge from current node <-> previous node
+	1. Draw Grid
 */
 var xValues = [];
 var yValues =[];
@@ -40,12 +37,30 @@ function draw_grid( rctx, rminor, rmajor, rstroke, rfill  )
     rctx.restore( );
 }
 
+//Determines the direction for North, East, South, or West
+//Displays white triangle
+
+
+//Fills in Square of current Position
+//Coordiante points are displayed
+function fillSquare(square, xaxis,yaxis,zaxis){
+	var PrintThis = '(' + xaxis/10 + ','+ yaxis/10 + ',' + zaxis/10 + ')';
+	square.beginPath();
+	square.rect(xaxis, yaxis, 10, 10);
+	square.fillStyle = 'Red';
+	square.fillText( PrintThis, xaxis+10, yaxis+10 );
+	square.fill();
+}
+
 function passPoint(context, xaxis, yaxis, zaxis){
 	var i=xaxis/10;
 	var j=yaxis/10;
 	var k=zaxis/10;
     var counter=0;
 	var temp
+
+  //tests residue distance
+  var residueTemp = 31;
 	//xaxis loop
 	for(;i>=0;){
 		//yaxis looop
@@ -60,30 +75,63 @@ function passPoint(context, xaxis, yaxis, zaxis){
 					if(i==0 || j==0 || k==0 || i==15 || j==8 || k==7)
           {
 						//Single Same Rule
-						if(i==xValues[counter-1] && j!=yValues[counter-1] && k!=zValues[counter-1]){
-								xValues[counter]=i;
-								yValues[counter]=j;
-								zValues[counter]=k;
-								counter++;
+						if(i==xValues[counter-1] && j!=yValues[counter-1] && k!=zValues[counter-1])
+            {
+              console.log("testing residue 1")
+              if(testResidue(i,j,k,residueTemp))
+              {
+                console.log("passed residue 1")
+                xValues[counter]=i;
+                yValues[counter]=j;
+                zValues[counter]=k;
+                residueTemp = Math.abs(i - j) + Math.abs(j - k) + Math.abs(k - i);
+                counter++;
+              }
+								//counter++;
 
 						}
-						else if(j==yValues[counter-1] && i!=xValues[counter-1] && k!=zValues[counter-1]){
-							xValues[counter]=i;
-							yValues[counter]=j;
-							zValues[counter]=k;
-							counter++;
+						else if(j==yValues[counter-1] && i!=xValues[counter-1] && k!=zValues[counter-1])
+            {
+              console.log("testing residue 2")
+              if(testResidue(i,j,k,residueTemp))
+              {
+                console.log("passed residue 2")
+                xValues[counter]=i;
+                yValues[counter]=j;
+                zValues[counter]=k;
+                residueTemp = Math.abs(i - j) + Math.abs(j - k) + Math.abs(k - i);
+                counter++;
+              }
+							//counter++;
 						}
-						else if(k==zValues[counter-1] && i!=xValues[counter-1] && j!=yValues[counter-1]){
-							xValues[counter]=i;
-							yValues[counter]=j;
-							zValues[counter]=k;
-							counter++;
+						else if(k==zValues[counter-1] && i!=xValues[counter-1] && j!=yValues[counter-1])
+            {
+              console.log("testing residue 3")
+              if(testResidue(i,j,k,residueTemp))
+              {
+                console.log("passed residue 3")
+                xValues[counter]=i;
+                yValues[counter]=j;
+                zValues[counter]=k;
+                residueTemp = Math.abs(i - j) + Math.abs(j - k) + Math.abs(k - i);
+                counter++;
+              }
+							//counter++;
 						}
-						else if(counter==0){
-							xValues[counter]=i;
-							yValues[counter]=j;
-							zValues[counter]=k;
-							counter++;
+						else if(counter==0)
+            {
+              console.log("testing residue 4")
+              if(testResidue(i,j,k,residueTemp))
+              {
+                console.log("passed residue 4")
+                xValues[counter]=i;
+                yValues[counter]=j;
+                zValues[counter]=k;
+                residueTemp = Math.abs(i - j) + Math.abs(j - k) + Math.abs(k - i);
+                console.log("residue distance is " + residueTemp)
+                counter++;
+              }
+							//counter++;
 						}
 
             /*
@@ -179,5 +227,21 @@ function printResidue()
   {
     newArray[i] = Math.abs(xValues[i] - yValues[i]) + Math.abs(yValues[i] - zValues[i]) + Math.abs(zValues[i] - xValues[i])
     console.log("Array at " + i + " " + newArray[i]);
+  }
+}
+
+function testResidue(i,j,k, previous)
+{
+  var test = Math.abs(i - j) + Math.abs(j - k) + Math.abs(k - i)
+
+  if(test < previous)
+  {
+    console.log("this is true")
+    return true
+  }
+  else
+  {
+    console.log("this is false")
+    return false
   }
 }

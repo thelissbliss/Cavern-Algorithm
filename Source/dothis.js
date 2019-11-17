@@ -47,7 +47,8 @@ function draw_grid( rctx, rminor, rmajor, rstroke, rfill  )
     }
     rctx.restore( );
 }
-
+//Finds next node that meets all requirements. The requirements followed include
+//verification of residue distance, the sum rule, zer-max rule, single same rule
 function passPoint(context, xaxis, yaxis, zaxis){
 	var i=xaxis/10;
 	var j=yaxis/10;

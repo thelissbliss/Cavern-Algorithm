@@ -12,7 +12,7 @@ Intro: Asgwilanga Caverns
 
 Contents (Files in the .zip submission):
 335-p2-LAB folder:
-	Big-O Analysis.docx
+	Big-O Analysis.txt
 	README.TXT
 	Index:
 		index.html

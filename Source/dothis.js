@@ -3,7 +3,10 @@
    Brandon Tomich btomich@csu.fullerton.edu
 
    File Description: This javascript file contains all functions
-	1. Draw Grid
+	1. Draw Grid: Draws grid
+	2. Passpoint:
+	3. Print:
+	4. Drawline: Draws edge from current node <-> previous node
 */
 var xValues = [];
 var yValues =[];
@@ -35,21 +38,6 @@ function draw_grid( rctx, rminor, rmajor, rstroke, rfill  )
         if ( iy % rmajor == 0 ) {rctx.fillText( iy/20, 0, iy,10 );}
     }
     rctx.restore( );
-}
-
-//Determines the direction for North, East, South, or West
-//Displays white triangle
-
-
-//Fills in Square of current Position
-//Coordiante points are displayed
-function fillSquare(square, xaxis,yaxis,zaxis){
-	var PrintThis = '(' + xaxis/10 + ','+ yaxis/10 + ',' + zaxis/10 + ')';
-	square.beginPath();
-	square.rect(xaxis, yaxis, 10, 10);
-	square.fillStyle = 'Red';
-	square.fillText( PrintThis, xaxis+10, yaxis+10 );
-	square.fill();
 }
 
 function passPoint(context, xaxis, yaxis, zaxis){

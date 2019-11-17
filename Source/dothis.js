@@ -34,7 +34,7 @@ function draw_grid( rctx, rminor, rmajor, rstroke, rfill  )
         rctx.lineTo( ix, height );
         rctx.lineWidth = ( ix % rmajor == 0 ) ? 0.5 : 0.25;
         rctx.stroke( );
-        if ( ix % rmajor == 0 ) { rctx.fillText( ix/30, ix, 10 ); }
+        //if ( ix % rmajor == 0 ) { rctx.fillText( ix/40, ix, 10 ); }
     }
     for ( var iy = 0; iy < height; iy += rminor )
     {
@@ -43,7 +43,7 @@ function draw_grid( rctx, rminor, rmajor, rstroke, rfill  )
         rctx.lineTo( width, iy );
         rctx.lineWidth = ( iy % rmajor == 0 ) ? 0.5 : 0.25;
         rctx.stroke( );
-        if ( iy % rmajor == 0 ) {rctx.fillText( iy/20, 0, iy,10 );}
+        //if ( iy % rmajor == 0 ) {rctx.fillText( iy/20, 0, iy,10 );}
     }
     rctx.restore( );
 }
@@ -53,7 +53,7 @@ function passPoint(context, xaxis, yaxis, zaxis){
 	var j=yaxis/10;
 	var k=zaxis/10;
     var counter=0;
-	var temp
+	var temp;
 
   //tests residue distance
   var residueTemp = 31;
@@ -76,12 +76,12 @@ function passPoint(context, xaxis, yaxis, zaxis){
 						      console.log("testing residue 1")
 						      if(testResidue(i,j,k,residueTemp))
 						      {
-							console.log("passed residue 1")
-							xValues[counter]=i;
-							yValues[counter]=j;
-							zValues[counter]=k;
-							residueTemp = Math.abs(i - j) + Math.abs(j - k) + Math.abs(k - i);
-							counter++;
+									console.log("passed residue 1")
+									xValues[counter]=i;
+									yValues[counter]=j;
+									zValues[counter]=k;
+									residueTemp = Math.abs(i - j) + Math.abs(j - k) + Math.abs(k - i);
+									counter++;
 						      }
 
 						}
@@ -90,12 +90,12 @@ function passPoint(context, xaxis, yaxis, zaxis){
 						      console.log("testing residue 2")
 						      if(testResidue(i,j,k,residueTemp))
 						      {
-							console.log("passed residue 2")
-							xValues[counter]=i;
-							yValues[counter]=j;
-							zValues[counter]=k;
-							residueTemp = Math.abs(i - j) + Math.abs(j - k) + Math.abs(k - i);
-							counter++;
+									console.log("passed residue 2")
+									xValues[counter]=i;
+									yValues[counter]=j;
+									zValues[counter]=k;
+									residueTemp = Math.abs(i - j) + Math.abs(j - k) + Math.abs(k - i);
+									counter++;
 						      }
 						}
 						else if(k==zValues[counter-1] && i!=xValues[counter-1] && j!=yValues[counter-1])
@@ -103,12 +103,12 @@ function passPoint(context, xaxis, yaxis, zaxis){
 						      console.log("testing residue 3")
 						      if(testResidue(i,j,k,residueTemp))
 						      {
-							console.log("passed residue 3")
-							xValues[counter]=i;
-							yValues[counter]=j;
-							zValues[counter]=k;
-							residueTemp = Math.abs(i - j) + Math.abs(j - k) + Math.abs(k - i);
-							counter++;
+								console.log("passed residue 3")
+								xValues[counter]=i;
+								yValues[counter]=j;
+								zValues[counter]=k;
+								residueTemp = Math.abs(i - j) + Math.abs(j - k) + Math.abs(k - i);
+								counter++;
 						      }
 						}
 						else if(counter==0)
@@ -116,13 +116,13 @@ function passPoint(context, xaxis, yaxis, zaxis){
 						      console.log("testing residue 4")
 						      if(testResidue(i,j,k,residueTemp))
 						      {
-							console.log("passed residue 4")
-							xValues[counter]=i;
-							yValues[counter]=j;
-							zValues[counter]=k;
-							residueTemp = Math.abs(i - j) + Math.abs(j - k) + Math.abs(k - i);
-							console.log("residue distance is " + residueTemp)
-							counter++;
+									console.log("passed residue 4")
+									xValues[counter]=i;
+									yValues[counter]=j;
+									zValues[counter]=k;
+									residueTemp = Math.abs(i - j) + Math.abs(j - k) + Math.abs(k - i);
+									console.log("residue distance is " + residueTemp)
+									counter++;
 						      }
 						}
 
@@ -152,45 +152,35 @@ function print(square)
 {
 	//var count=0
 	for (var count = 0; count < 50; ++count)
-  {
-    (function (count)
-    {
-      setTimeout(function()
-      {
-		if(count>0 && xValues[count]!=null){
-			var temp4=xValues[count-1]*10;
-			var temp5=yValues[count-1]*10;
-			var PrintThis = '(' + xValues[count-1] + ','+ yValues[count-1] + ',' + zValues[count-1] + ')';
-			square.rect(temp4*3, temp5*2, 8, 8);
-			square.fillStyle = 'white';
-			if(yValues[count-1]==0){
-				square.fillText( PrintThis, temp4*3.3-40, temp5*2+20 );
+	  {
+	    (function (count)
+	    {
+	      setTimeout(function()
+	      {
+			if(count>0 && xValues[count]!=null){
+				var temp4=xValues[count-1]*10;
+				var temp5=yValues[count-1]*10;
+				var PrintThis = '(' + xValues[count-1] + ','+ yValues[count-1] + ',' + zValues[count-1] + ')';
+				square.rect(temp4*4.5-110, temp5*3, 8, 8);
+				square.fillStyle = 'white';
+				square.fillText( PrintThis, temp4*4.5-110, temp5*3+20 );
+				square.fill();
 			}
-		  	else{
-				square.fillText( PrintThis, temp4*3.2, temp5*2+20 );
-			}
+			var temp1=xValues[count]*10;
+			var temp2=yValues[count]*10;
+			var temp3=zValues[count]*10;
+			var PrintThis = '(' + xValues[count] + ','+ yValues[count] + ',' + zValues[count] + ')';
+			square.beginPath();
+			square.rect(temp1*4.5-110, temp2*3, 8,8);
+			square.fillStyle = 'Red';
+				square.fillText( PrintThis, temp1*4.5-110, temp2*3+20 );
 			square.fill();
-		}
-    		var temp1=xValues[count]*10;
-    		var temp2=yValues[count]*10;
-    		var temp3=zValues[count]*10;
-    		var PrintThis = '(' + xValues[count] + ','+ yValues[count] + ',' + zValues[count] + ')';
-    		square.beginPath();
-    		square.rect(temp1*3, temp2*2, 8,8);
-    		square.fillStyle = 'Red';
-		  	if(yValues[count]==0){
-				square.fillText( PrintThis, temp1*3.3-40, temp2*2+20 );
+			if(count>0){
+				DrawLine(context, xValues[count-1],yValues[count-1],xValues[count],yValues[count]);
 			}
-		  	else{
-				square.fillText( PrintThis, temp1*3.2, temp2*2+20 );
-			}
-    		square.fill();
-	      	if(count>0){
-			DrawLine(context, xValues[count-1],yValues[count-1],xValues[count],yValues[count]);
-		}
 
-  }, 100*count);
-    })(count);
+	  }, 100*count);
+    	})(count);
   }
 
 }
@@ -199,8 +189,8 @@ function print(square)
 function DrawLine(square, x1,y1,x2,y2)
 {
 	square.beginPath();
-	square.moveTo(x1*30+2, y1*20+2);
-	square.lineTo(x2*30+2, y2*20+2);
+	square.moveTo(x1*45-105, y1*30+2);
+	square.lineTo(x2*45-105, y2*30+2);
 	square.strokeStyle = "aqua";
 	square.stroke();
 }

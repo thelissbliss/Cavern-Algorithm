@@ -1,6 +1,6 @@
 /* Laura Solorio laurasolorio98@csu.fullerton.edu
    Alyssa Bright alyssabright@csu.fullerton.edu
-   Brandon btomich@csu.fullerton.edu
+   Brandon Tomich btomich@csu.fullerton.edu
 
    File Description: This javascript file contains all functions
 	1. Draw Grid
@@ -66,11 +66,13 @@ function passPoint(context, xaxis, yaxis, zaxis){
 			for(;k<=7;){
 				temp=i+j+k;
 				//Sum Rule
-				if(temp == 15){
+				if(temp == 15)
+        {
 					//Zero-Max Rule
-					if(i==0 || j==0 || k==0 || i==15 || j==8 || k==7){
-						//Simple Same RUle
-						/*if(i==xValues[counter-1] && j!=yValues[counter-1] && k!=zValues[counter-1]){
+					if(i==0 || j==0 || k==0 || i==15 || j==8 || k==7)
+          {
+						//Single Same Rule
+						if(i==xValues[counter-1] && j!=yValues[counter-1] && k!=zValues[counter-1]){
 								xValues[counter]=i;
 								yValues[counter]=j;
 								zValues[counter]=k;
@@ -94,11 +96,15 @@ function passPoint(context, xaxis, yaxis, zaxis){
 							yValues[counter]=j;
 							zValues[counter]=k;
 							counter++;
-						}*/
-						xValues[counter]=i;
+						}
+
+            /*
+						  xValues[counter]=i;
 							yValues[counter]=j;
 							zValues[counter]=k;
-							counter++;
+              */
+
+							//counter++;
 
 					}
 
@@ -133,7 +139,7 @@ function print(square)
 			var PrintThis = '(' + xValues[count-1] + ','+ yValues[count-1] + ',' + zValues[count-1] + ')';
 			//square.beginPath();
 			square.rect(temp4*3, temp5*2, 8, 8);
-			square.fillStyle = 'Grey';
+			square.fillStyle = 'white';
 			if(yValues[count-1]==0){
 				square.fillText( PrintThis, temp4*3.3-40, temp5*2+20 );
 			}
@@ -160,7 +166,7 @@ function print(square)
 			DrawLine(context, xValues[count-1],yValues[count-1],xValues[count],yValues[count]);
 		}
 
-      }, 100*count);
+  }, 100*count);
     })(count);
   }
 
@@ -173,4 +179,17 @@ function DrawLine(square, x1,y1,x2,y2)
 	square.lineTo(x2*30+2, y2*20+2);
 	square.strokeStyle = "aqua";
 	square.stroke();
+}
+
+function printResidue()
+{
+  var newArray = [];
+
+  var len = xValues.length
+
+  for(i = 0; i < len; ++i)
+  {
+    newArray[i] = Math.abs(xValues[i] - yValues[i]) + Math.abs(yValues[i] - zValues[i]) + Math.abs(zValues[i] - xValues[i])
+    console.log("Array at " + i + " " + newArray[i]);
+  }
 }

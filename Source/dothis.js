@@ -3,7 +3,18 @@
    Brandon Tomich btomich@csu.fullerton.edu
 
    File Description: This javascript file contains all functions
-	1. Draw Grid
+	1. Draw Grid: Draws/Displays grid
+	2. Passpoint: Finds next node that meets all requirements. The requirements followed include
+	   verification of residue distance, the sum rule, zer-max rule, single same rule
+	3. Draw Line: Displays edge(line) from current node<-> previous node
+	4. Print: Prints out all values of the node to the grid
+  		  We have inserted a delay before the next node is displayed
+   		  The draw line function is called to display the edge from current node<-> prvious node
+	5. Test Residue: Tests residue distance of current node. 
+			 Returns true if the node's current residue is not less then previous
+	6. Print Residue: Stores Residue values of all nodes that meet the requirements
+	
+	
 */
 var xValues = [];
 var yValues =[];
@@ -37,21 +48,6 @@ function draw_grid( rctx, rminor, rmajor, rstroke, rfill  )
     rctx.restore( );
 }
 
-//Determines the direction for North, East, South, or West
-//Displays white triangle
-
-
-//Fills in Square of current Position
-//Coordiante points are displayed
-function fillSquare(square, xaxis,yaxis,zaxis){
-	var PrintThis = '(' + xaxis/10 + ','+ yaxis/10 + ',' + zaxis/10 + ')';
-	square.beginPath();
-	square.rect(xaxis, yaxis, 10, 10);
-	square.fillStyle = 'Red';
-	square.fillText( PrintThis, xaxis+10, yaxis+10 );
-	square.fill();
-}
-
 function passPoint(context, xaxis, yaxis, zaxis){
 	var i=xaxis/10;
 	var j=yaxis/10;
@@ -76,71 +72,60 @@ function passPoint(context, xaxis, yaxis, zaxis){
           {
 						//Single Same Rule
 						if(i==xValues[counter-1] && j!=yValues[counter-1] && k!=zValues[counter-1])
-            {
-              console.log("testing residue 1")
-              if(testResidue(i,j,k,residueTemp))
-              {
-                console.log("passed residue 1")
-                xValues[counter]=i;
-                yValues[counter]=j;
-                zValues[counter]=k;
-                residueTemp = Math.abs(i - j) + Math.abs(j - k) + Math.abs(k - i);
-                counter++;
-              }
-								//counter++;
+						    {
+						      console.log("testing residue 1")
+						      if(testResidue(i,j,k,residueTemp))
+						      {
+							console.log("passed residue 1")
+							xValues[counter]=i;
+							yValues[counter]=j;
+							zValues[counter]=k;
+							residueTemp = Math.abs(i - j) + Math.abs(j - k) + Math.abs(k - i);
+							counter++;
+						      }
 
 						}
 						else if(j==yValues[counter-1] && i!=xValues[counter-1] && k!=zValues[counter-1])
-            {
-              console.log("testing residue 2")
-              if(testResidue(i,j,k,residueTemp))
-              {
-                console.log("passed residue 2")
-                xValues[counter]=i;
-                yValues[counter]=j;
-                zValues[counter]=k;
-                residueTemp = Math.abs(i - j) + Math.abs(j - k) + Math.abs(k - i);
-                counter++;
-              }
-							//counter++;
-						}
-						else if(k==zValues[counter-1] && i!=xValues[counter-1] && j!=yValues[counter-1])
-            {
-              console.log("testing residue 3")
-              if(testResidue(i,j,k,residueTemp))
-              {
-                console.log("passed residue 3")
-                xValues[counter]=i;
-                yValues[counter]=j;
-                zValues[counter]=k;
-                residueTemp = Math.abs(i - j) + Math.abs(j - k) + Math.abs(k - i);
-                counter++;
-              }
-							//counter++;
-						}
-						else if(counter==0)
-            {
-              console.log("testing residue 4")
-              if(testResidue(i,j,k,residueTemp))
-              {
-                console.log("passed residue 4")
-                xValues[counter]=i;
-                yValues[counter]=j;
-                zValues[counter]=k;
-                residueTemp = Math.abs(i - j) + Math.abs(j - k) + Math.abs(k - i);
-                console.log("residue distance is " + residueTemp)
-                counter++;
-              }
-							//counter++;
-						}
-
-            /*
-						  xValues[counter]=i;
+						    {
+						      console.log("testing residue 2")
+						      if(testResidue(i,j,k,residueTemp))
+						      {
+							console.log("passed residue 2")
+							xValues[counter]=i;
 							yValues[counter]=j;
 							zValues[counter]=k;
-              */
+							residueTemp = Math.abs(i - j) + Math.abs(j - k) + Math.abs(k - i);
+							counter++;
+						      }
+						}
+						else if(k==zValues[counter-1] && i!=xValues[counter-1] && j!=yValues[counter-1])
+						    {
+						      console.log("testing residue 3")
+						      if(testResidue(i,j,k,residueTemp))
+						      {
+							console.log("passed residue 3")
+							xValues[counter]=i;
+							yValues[counter]=j;
+							zValues[counter]=k;
+							residueTemp = Math.abs(i - j) + Math.abs(j - k) + Math.abs(k - i);
+							counter++;
+						      }
+						}
+						else if(counter==0)
+						    {
+						      console.log("testing residue 4")
+						      if(testResidue(i,j,k,residueTemp))
+						      {
+							console.log("passed residue 4")
+							xValues[counter]=i;
+							yValues[counter]=j;
+							zValues[counter]=k;
+							residueTemp = Math.abs(i - j) + Math.abs(j - k) + Math.abs(k - i);
+							console.log("residue distance is " + residueTemp)
+							counter++;
+						      }
+						}
 
-							//counter++;
 
 					}
 
@@ -159,7 +144,10 @@ function passPoint(context, xaxis, yaxis, zaxis){
 	}
 }
 
-
+/* Prints out all values of the node to the grid
+   We have inserted a delay before the next node is displayed
+   The draw line function is called to display the edge from current node<-> prvious node
+   */
 function print(square)
 {
 	//var count=0
@@ -173,7 +161,6 @@ function print(square)
 			var temp4=xValues[count-1]*10;
 			var temp5=yValues[count-1]*10;
 			var PrintThis = '(' + xValues[count-1] + ','+ yValues[count-1] + ',' + zValues[count-1] + ')';
-			//square.beginPath();
 			square.rect(temp4*3, temp5*2, 8, 8);
 			square.fillStyle = 'white';
 			if(yValues[count-1]==0){
@@ -208,6 +195,7 @@ function print(square)
 
 }
 
+//Displays edge(line) from current node<-> previous node
 function DrawLine(square, x1,y1,x2,y2)
 {
 	square.beginPath();
@@ -217,6 +205,7 @@ function DrawLine(square, x1,y1,x2,y2)
 	square.stroke();
 }
 
+//Stores Residue values of all nodes that meet the requirements
 function printResidue()
 {
   var newArray = [];
@@ -230,6 +219,8 @@ function printResidue()
   }
 }
 
+//Tests residue distance of current node. 
+//Returns true if the node's current residue is not less then previous
 function testResidue(i,j,k, previous)
 {
   var test = Math.abs(i - j) + Math.abs(j - k) + Math.abs(k - i)

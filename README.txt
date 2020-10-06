@@ -2,11 +2,9 @@
 # Team Name: LAB
 
 Members(Group members are from 2 different class sections):
-Section Number = CPSC 335-04 
-Laura Solorio  - laurasolorio98@csu.fullerton.edu
-Alyssa Bright  - alyssabright@csu.fullerton.edu
-Section Number = CPSC 335-05
-Brandon Tomich - btomich@csu.fullerton.edu
+Laura 
+Alyssa 
+Brandon
 
 Intro: Asgwilanga Caverns
 
